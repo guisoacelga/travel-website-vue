@@ -10,7 +10,8 @@ import AboutUs from './components/AboutUs.vue'
 import ContactUs from './components/ContactUs.vue'
 
 const routes = [
-  { path: '/', component: Home },
+  { path: '/', redirect: '/Home' },
+  { path: '/Home', component: Home },
   { path: '/AboutUs', component: AboutUs },
   { path: '/ContactUs', component: ContactUs }
 ]

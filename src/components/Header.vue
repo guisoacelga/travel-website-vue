@@ -16,16 +16,13 @@
         <router-link class="navbar-brand" to="/">Let's Travel</router-link>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-              <router-link class="nav-link" to="/">
-                Home
-                <span class="sr-only">(current)</span>
-              </router-link>
+            <li :class="[currentPage.includes('/Home') ? activeClass : '', 'nav-item']">
+              <router-link class="nav-link" to="/">Home</router-link>
             </li>
-            <li class="nav-item">
+            <li :class="[currentPage.includes('AboutUs') ? activeClass : '', 'nav-item']">
               <router-link class="nav-link" to="/AboutUs">About Us</router-link>
             </li>
-            <li class="nav-item">
+            <li :class="[currentPage.includes('ContactUs') ? activeClass : '', 'nav-item']">
               <router-link class="nav-link" to="/ContactUs">Contacts</router-link>
             </li>
           </ul>
@@ -46,6 +43,16 @@
 
 <script>
 export default {
-  name: "Header"
+  name: "Header",
+  computed: {
+    currentPage() {
+      return this.$route.path;
+    }
+  },
+  data() {
+    return {
+      activeClass: "active"
+    };
+  }
 };
 </script>
