@@ -26,7 +26,7 @@
               <router-link class="nav-link" to="/ContactUs">Contacts</router-link>
             </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
+          <form :class="[currentPage.includes('/Home') ? 'form-inline my-2 my-lg-0' : 'd-none']">
             <input
               class="form-control mr-sm-2"
               type="search"
