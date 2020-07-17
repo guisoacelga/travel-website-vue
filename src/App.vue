@@ -1,28 +1,29 @@
 <template>
   <div id="app">
-    <Header/>
+    <Header v-model="searchText" />
     <main>
       <div class="container">
-        <router-view>
-
-        </router-view>
-        
-        
+        <router-view :searchText="searchText"></router-view>
       </div>
     </main>
-    <Footer/>
+    <Footer />
   </div>
 </template>
 
 <script>
-import Header from './components/Header.vue'
-import Footer from './components/Footer.vue'
+import Header from "./components/Header.vue";
+import Footer from "./components/Footer.vue";
 export default {
   name: "App",
-  components:{
+  components: {
     Header,
-    Footer,
-  } 
+    Footer
+  },
+  data() {
+    return {
+      searchText: ""
+    };
+  }
 };
 </script>
 

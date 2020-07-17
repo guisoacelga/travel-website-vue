@@ -3,9 +3,9 @@
     <Slider />
     <!-- ****** Cards ***** -->
     <div class="row mt-20">
-      <Card 
-      v-for="card in cards"
-      :key="card.id"
+      <Card
+        v-for="card in filteredCards"
+        :key="card.id"
         :image="card.image"
         :title="card.title"
         :text="card.text"
@@ -22,6 +22,11 @@ export default {
   components: {
     Slider,
     Card
+  },
+  props: {
+    searchText: {
+      type: String
+    }
   },
   data: function() {
     return {
@@ -70,6 +75,19 @@ export default {
         }
       ]
     };
+  },
+  computed: {
+    filteredCards() {
+      if (this.searchText === "") {
+        return this.cards;
+      }
+      return this.cards.filter(card => {
+        return (
+          card.title.toLowerCase().includes(this.searchText.toLowerCase()) ||
+          card.text.toLowerCase().includes(this.searchText.toLowerCase())
+        );
+      });
+    }
   }
 };
 </script>
